@@ -10,14 +10,11 @@
         </el-header>
         <el-main>
           <tab ref="childtab" :homePageTab="config.homePageTab"></tab>
-          <!-- 主体视图层 -->
-<!--          <div class="main-container">-->
           <el-scrollbar style="height:100%;overflow: hidden" class="main-container">
             <keep-alive>
-              <router-view class="avue-view"/>
+              <router-view class="frontboard-view"/>
             </keep-alive>
           </el-scrollbar>
-<!--          </div>-->
         </el-main>
         <el-footer style="height: 30px">作者：刘宇才  QQ:2395783668@qq.com</el-footer>
       </el-container>
@@ -61,6 +58,8 @@
   import top from "./top/index";
   import sidebar from "./sidebar/index";
   import tab from "./tab/index";
+  import router from '@/router';
+
   export default {
     name: 'frontboard',
     components: {
@@ -88,6 +87,10 @@
       },
       openMenu(item){
         console.log("addTabParent");
+        console.log(item);
+        this.$router.push({
+          path:item.path,
+        })
         this.$refs.childtab.openMenu(item);
       },
       collapseOpen(){

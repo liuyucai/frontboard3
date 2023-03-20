@@ -5,7 +5,7 @@
           <el-tabs v-model="editableTabsValue" type="card"
                    :closable="tagLen"
                    @tab-remove="removeTab"
-                   @tab-click="openTag">
+                   @tab-change="tagChange">
             <el-tab-pane
               v-for="(item) in editableTabs"
               :key="item.name"
@@ -215,9 +215,9 @@
               });
             }
           },
-          openTag(targetName){
+          tagChange(targetName){
             this.$router.push({
-                path: targetName.name,
+                path: targetName,
             });
           },
       }
